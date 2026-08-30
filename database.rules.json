@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "workspaces": {
+      "$workspaceId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+        "tasks": {
+          "$taskId": {
+            ".validate": "!newData.exists() || (newData.hasChildren(['id','date','time','title','completed']) && newData.child('id').isString() && newData.child('date').isString() && newData.child('time').isString() && newData.child('title').isString() && newData.child('title').val().length <= 160 && newData.child('completed').isBoolean())"
+          }
+        }
+      }
+    }
+  }
+}
